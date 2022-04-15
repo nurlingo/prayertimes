@@ -39,13 +39,13 @@ extension ViewController: CLLocationManagerDelegate {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         
-        let urlCustomMethod = URL(string: "https://api.aladhan.com/v1/timings?latitude=\(locValue.latitude)&\(locValue.longitude)&method=99&methodSettings=18.0,null,15.0")!
+        let urlCustomMethod = URL(string: "https://api.aladhan.com/v1/timings?latitude=\(locValue.latitude)&longitude=\(locValue.longitude)&method=99&methodSettings=18.0,null,15.0")!
         
-        let urlMWL = URL(string: "https://api.aladhan.com/v1/timings?latitude=\(locValue.latitude)&\(locValue.longitude)&method=3")!
+        let urlMWL = URL(string: "https://api.aladhan.com/v1/timings?latitude=\(locValue.latitude)&longitude=\(locValue.longitude)&method=3")!
         
         let jsonDecoder = JSONDecoder()
         
-        URLSession.shared.dataTask(with: urlMWL) { data, response, error in
+        URLSession.shared.dataTask(with: urlCustomMethod) { data, response, error in
             
             let dataString = String(decoding: data!, as: UTF8.self)
             print(dataString)
